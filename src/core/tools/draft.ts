@@ -111,12 +111,12 @@ export function campaignChecks(ctx: OpsContext, p: Pick<CampaignPayload, "discou
   return [checkDiscount(ctx.limits, p.discount_pct)];
 }
 
-function testCampaignCopy(segmentName: string, titles: string[], discount: number, code: string) {
+function testCampaignCopy(titles: string[], discount: number, code: string) {
   const list = titles.map((t) => `- ${t}`).join("\n");
   const offer = discount > 0 ? `${discount}% off with code ${code}` : "a little something new to try";
   return {
     subject: discount > 0 ? `${discount}% off a few quiet favourites` : "A few favourites worth another look",
-    body: `Hi {{ first_name }},\n\nA few of our favourites have been waiting patiently on the shelf, so this week they're ${offer}:\n\n${list}\n\nSame fragrance-free, vegan formulas you trust. The offer runs until Sunday at midnight while stock lasts.\n\nWith care,\nThe Fernleaf team\n\n(Sent to: ${segmentName})`,
+    body: `Hi {{ first_name }},\n\nA few of our favourites have been waiting patiently on the shelf, so this week they're ${offer}:\n\n${list}\n\nSame fragrance-free, vegan formulas you trust. The offer runs until Sunday at midnight while stock lasts.\n\nWith care,\nThe Fernleaf team`,
   };
 }
 
@@ -138,7 +138,7 @@ export async function draftCampaign(ctx: OpsContext, caller: Caller, args: z.inf
   let body = args.body;
   let source: CampaignPayload["copy_source"] = "caller";
   if (!subject || !body) {
-    const fallback = testCampaignCopy(seg.name, titles, args.discount_pct, code);
+    const fallback = testCampaignCopy(titles, args.discount_pct, code);
     const text = await ctx.llm.generate({
       system:
         "You write short, warm, honest marketing emails for Fernleaf Skin Co., an independent skincare store. " +

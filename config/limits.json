@@ -13,12 +13,13 @@
     "customer_segments": "read:customers",
     "draft_reorder": "draft:reorder",
     "draft_campaign": "draft:campaign",
-    "draft_product_update": "draft:product"
+    "draft_product_update": "draft:product",
+    "publish_weekly_review": "write:briefing"
   },
   "clients": {
     "default": [
       "read:sales", "read:inventory", "read:customers",
-      "draft:reorder", "draft:campaign", "draft:product"
+      "draft:reorder", "draft:campaign", "draft:product", "write:briefing"
     ],
     "readonly": ["read:sales", "read:inventory", "read:customers"]
   }

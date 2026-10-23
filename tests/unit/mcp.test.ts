@@ -42,7 +42,7 @@ describe("MCP server", () => {
 });
 
 describe("MCP over HTTP", () => {
-  const env = { MCP_TOKENS: "default:aaaaaaaaaaaaaaaaaaaa,readonly:bbbbbbbbbbbbbbbbbbbb" } as NodeJS.ProcessEnv;
+  const env = { MCP_TOKENS: "default:aaaaaaaaaaaaaaaaaaaa,readonly:bbbbbbbbbbbbbbbbbbbb" } as unknown as NodeJS.ProcessEnv;
   const rpc = (body: unknown, token?: string) =>
     new Request("http://localhost/api/mcp", {
       method: "POST",

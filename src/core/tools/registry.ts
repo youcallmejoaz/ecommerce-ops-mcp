@@ -6,11 +6,12 @@ import { checkScope } from "../limits";
 import { logActivity } from "../log";
 import * as read from "./read";
 import * as draft from "./draft";
+import { publishWeeklyReview, publishWeeklyReviewInput } from "../briefing";
 
 export interface ToolDef {
   name: string;
   title: string;
-  kind: "read" | "draft";
+  kind: "read" | "draft" | "report";
   description: string;
   input: z.ZodRawShape;
   run: (ctx: OpsContext, caller: Caller, args: any) => unknown | Promise<unknown>;
@@ -90,6 +91,14 @@ export const TOOLS: ToolDef[] = [
     description: "Draft a change to a product's title, description, price or tags. Price cuts beyond the max discount, or below cost, are blocked." + DRAFT_NOTE,
     input: draft.draftProductUpdateInput,
     run: (ctx, c, a) => draft.draftProductUpdate(ctx, c, a),
+  },
+  {
+    name: "publish_weekly_review",
+    title: "Publish weekly review",
+    kind: "report",
+    description: "Save the Monday weekly store review as a PDF in the admin. Pass your narrative; the sales, reorder, slow-mover and segment numbers are pulled from store data server-side. Used by the weekly-store-review Skill. Does not change the store or send email.",
+    input: publishWeeklyReviewInput,
+    run: (ctx, c, a) => publishWeeklyReview(ctx, c, a),
   },
 ];
 
