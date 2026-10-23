@@ -15,7 +15,8 @@
     "mcp": "tsx src/mcp/stdio.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:e2e": "node tests/e2e/run.mjs"
+    "test:e2e": "node tests/e2e/run.mjs",
+    "sync:shopify": "tsx src/core/adapters/shopify-sync-cli.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.2.0",

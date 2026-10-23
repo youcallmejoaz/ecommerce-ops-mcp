@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ecommerce-ops": {
+      "command": "npm",
+      "args": ["--prefix", "/ABSOLUTE/PATH/TO/ecommerce-ops-mcp", "run", "--silent", "mcp"],
+      "env": {
+        "MCP_CLIENT": "default"
+      }
+    }
+  }
+}

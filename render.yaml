@@ -1,0 +1,25 @@
+# Render blueprint: one web service runs the admin and the MCP HTTP endpoint (/api/mcp)
+# on the same SQLite file, so drafts from Claude land in the same approval queue.
+services:
+  - type: web
+    name: ecommerce-ops-mcp
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /login
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_PATH
+        value: ./data/store.db
+      - key: STORE_TODAY
+        value: "2026-10-19"
+      - key: ADMIN_USERS
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: MCP_TOKENS
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
