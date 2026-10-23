@@ -1,0 +1,25 @@
+{
+  "$comment": "Guardrails for every Claude tool call. No secrets belong in this file.",
+  "maxDiscountPct": 20,
+  "maxReorderValueUsd": 20000,
+  "dailyActionCap": 25,
+  "slowMover": { "windowDays": 30, "maxUnits": 5 },
+  "toolScopes": {
+    "sales_summary": "read:sales",
+    "top_products": "read:sales",
+    "slow_movers": "read:inventory",
+    "inventory_status": "read:inventory",
+    "stockout_forecast": "read:inventory",
+    "customer_segments": "read:customers",
+    "draft_reorder": "draft:reorder",
+    "draft_campaign": "draft:campaign",
+    "draft_product_update": "draft:product"
+  },
+  "clients": {
+    "default": [
+      "read:sales", "read:inventory", "read:customers",
+      "draft:reorder", "draft:campaign", "draft:product"
+    ],
+    "readonly": ["read:sales", "read:inventory", "read:customers"]
+  }
+}
