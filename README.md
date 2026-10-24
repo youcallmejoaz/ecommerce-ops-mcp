@@ -91,5 +91,5 @@ src/core/                 db + seed, tools (read/draft/registry), limits, approv
 src/mcp/                  MCP server, stdio entry, HTTP handler
 src/app/                  Next.js admin + /api/mcp, /api/chat, /api/briefings/[id]/pdf
 tests/unit, tests/e2e
-clips/                    demo video clips (Git LFS) and MANIFEST.md
+clips/                    demo video clips (MP4, ~14 MB total) and MANIFEST.md
 ```
