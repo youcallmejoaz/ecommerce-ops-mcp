@@ -113,7 +113,7 @@ async function runScripted(ctx: OpsContext, caller: Caller, history: ChatTurn[])
   const m = msg.toLowerCase();
   const steps: ToolStep[] = [];
   const done = (reply: string): AgentReply => ({ reply, steps, mode: "test" });
-  const blocked = (r: ToolResult) => (r.ok ? "" : `**Blocked.** ${r.error}`);
+  const blocked = (r: ToolResult) => (r.ok ? "" : r.blocked ? `**Blocked:** ${r.error.replace(/^Blocked:\s*/, "")}` : r.error);
 
   // Product description / title update
   if (/(description|rewrite|product copy|update the (title|copy)|retitle)/.test(m)) {

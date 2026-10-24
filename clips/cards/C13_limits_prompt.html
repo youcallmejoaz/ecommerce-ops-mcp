@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="terminal.css"></head><body>
+<div class="win"><div class="bar"><i></i><i></i><i></i><span>claude · ecommerce-ops-mcp</span></div><div id="out"></div></div>
+<script>
+window.SCRIPT = {
+  typeMs: 24,
+  prompt: "add spend and discount limits: max discount, max reorder value, daily action cap, all in a config file. Blocked calls must say why.",
+  lines: [
+    [500, '<span class="dim">● Edit</span> config/limits.json   <span class="g">+ maxDiscountPct 20, maxReorderValueUsd 20000, dailyActionCap 25</span>'],
+    [350, '<span class="dim">● Edit</span> src/core/limits.ts   <span class="g">+ checkDiscount, checkReorderValue, checkPriceChange, checkDailyCap</span>'],
+    [350, '<span class="dim">● Edit</span> src/core/approvals.ts <span class="g">+ re-check limits at approval time</span>'],
+    [350, '<span class="dim">● Bash</span> npm test -- limits'],
+    [600, '  <span class="g">✓</span> blocks an oversized reorder with a clear message and writes nothing'],
+    [150, '  <span class="g">✓</span> blocks a campaign discount above the max before writing copy'],
+    [150, '  <span class="g">✓</span> treats deep price cuts as discounts and blocks below-cost prices'],
+    [150, '  <span class="g">✓</span> enforces the daily action cap'],
+    [150, '  <span class="g">✓</span> enforces per-tool scopes'],
+    [300, ''],
+    [200, '<span class="r">Blocked:</span> this reorder would cost $28,000.00, above the $20,000.00 max'],
+    [100, 'reorder value in config/limits.json.'],
+  ],
+};
+</script><script src="terminal.js"></script></body></html>

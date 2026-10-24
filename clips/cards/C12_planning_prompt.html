@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="terminal.css"></head><body>
+<div class="win"><div class="bar"><i></i><i></i><i></i><span>claude · ecommerce-ops-mcp · plan mode</span></div><div id="out"></div></div>
+<script>
+window.SCRIPT = {
+  typeMs: 22,
+  prompt: "You are in plan mode. Read the brief, ask what you need, then give me a phased plan with file tree, data model and test plan. Wait for my approval before building.",
+  lines: [
+    [700, '<span class="dim">● Reading brief: Shopify-style ops agent, MCP server, approval queue, limits</span>'],
+    [500, ''],
+    [300, '<span class="h">Plan</span>'],
+    [250, '<span class="g">P0</span>  repo, .env.example, Git LFS for clips, CI'],
+    [250, '<span class="g">P1</span>  SQLite schema + seed: 40 products, 120 days, 4 at-risk, 6 slow movers'],
+    [250, '<span class="g">P2</span>  MCP server: 6 read tools, 3 draft tools, limits, activity log'],
+    [250, '<span class="g">P3</span>  Next.js admin: approval queue, activity, mock store, Ask Claude'],
+    [250, '<span class="g">P4</span>  weekly-store-review Skill → PDF'],
+    [250, '<span class="g">P5</span>  Shopify + Klaviyo adapters, README, Render deploy'],
+    [250, '<span class="g">P6</span>  clips + MANIFEST.md'],
+    [400, ''],
+    [200, '<span class="a">⚠ pushback</span>  admin on Vercel + local MCP = two databases. Serve MCP over HTTP'],
+    [100, '            from the same app so drafts land in one approval queue.'],
+    [500, '<span class="dim">Waiting for approval…</span>'],
+  ],
+};
+</script><script src="terminal.js"></script></body></html>

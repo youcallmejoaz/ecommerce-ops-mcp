@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"><style>
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 46px; }
+.s { border: 1px solid var(--line); border-radius: 18px; padding: 26px 28px; display: flex; gap: 20px; align-items: flex-start; background: #fff; }
+.s .ic { flex: none; width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; font-size: 26px; font-weight: 800; }
+.s b { font-size: 26px; display: block; margin-bottom: 6px; } .s p { font-size: 19px; color: var(--muted); line-height: 1.4; }
+.g { background: var(--green-soft); color: var(--green); } .a { background: var(--amber-soft); color: var(--amber); } .r { background: var(--red-soft); color: var(--red); }
+.vals { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.v { font-size: 15px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--amber-soft); color: var(--amber); }
+</style></head><body><div class="frame">
+  <div class="kicker amber in d1">What could go wrong</div>
+  <h1 class="in d2">Guardrails are enforced on the server, not in the prompt.</h1>
+  <div class="grid">
+    <div class="s in d4"><div class="ic g">✓</div><div><b>Approval for every change</b><p>Drafts wait in a queue. Nothing reaches the store or inbox until a named person approves it.</p></div></div>
+    <div class="s in d6"><div class="ic a">$</div><div><b>Spend and discount caps</b><p>Over-limit drafts are blocked with a clear reason.</p><div class="vals"><span class="v">max discount 20%</span><span class="v">max reorder $20,000</span><span class="v">25 actions / day</span></div></div></div>
+    <div class="s in d8"><div class="ic r">⚿</div><div><b>Scoped tools</b><p>Read tools and draft tools are separate. A read-only client can't draft anything.</p></div></div>
+    <div class="s in d10"><div class="ic g">≡</div><div><b>Activity log</b><p>Every tool call, block, approval and rejection, with who did it and when.</p></div></div>
+  </div>
+</div></body></html>
