@@ -58,7 +58,12 @@ export function createContext(env: NodeJS.ProcessEnv = process.env): OpsContext 
       if (env.STORE_TODAY?.trim() || !mock) return resolveToday();
       return seededFor(db) ?? resolveToday();
     },
-    now: () => new Date().toISOString(),
+    // With a pinned STORE_TODAY, log timestamps use that day (with the real time of day) so the demo reads consistently.
+    now: () => {
+      const iso = new Date().toISOString();
+      const pinned = env.STORE_TODAY?.trim();
+      return pinned ? `${pinned}${iso.slice(10)}` : iso;
+    },
     store: storeAdapter(db, env),
     email: emailAdapter(db, env),
     llm: createLLM(env),
